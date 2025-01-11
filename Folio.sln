@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolioSite", "FolioSite\FolioSite.csproj", "{90898F02-F085-47D2-A2E5-58753F8A1FC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolioDataApi", "FolioDataApi\FolioDataApi.csproj", "{3983C9FB-797E-48D1-8359-1AA65A8B7270}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FolioCommon", "FolioCommon\FolioCommon\FolioCommon.shproj", "{82F8CA7B-42CD-4F70-BD7B-FAA5F418F3CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90898F02-F085-47D2-A2E5-58753F8A1FC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90898F02-F085-47D2-A2E5-58753F8A1FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90898F02-F085-47D2-A2E5-58753F8A1FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90898F02-F085-47D2-A2E5-58753F8A1FC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3983C9FB-797E-48D1-8359-1AA65A8B7270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3983C9FB-797E-48D1-8359-1AA65A8B7270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3983C9FB-797E-48D1-8359-1AA65A8B7270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3983C9FB-797E-48D1-8359-1AA65A8B7270}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		FolioCommon\FolioCommon\FolioCommon.projitems*{82f8ca7b-42cd-4f70-bd7b-faa5f418f3ca}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal
