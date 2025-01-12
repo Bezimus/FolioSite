@@ -1,0 +1,14 @@
+﻿.foliotable {
+    width: stretch;
+    text-align: left;
+}
+
+.tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.td {
+    vertical-align: top;
+    text-align: left;
+
+}

@@ -1,4 +1,13 @@
 ﻿@inherits LayoutComponentBase
+@using FolioCommon
+
+@code{
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+    }
+}
 
 <div class="page">
     <div class="sidebar">
@@ -6,14 +15,13 @@
     </div>
 
     <main>
+       
         
         <article class="content px-4">
-            @Body
+                  @Body
         </article>
 
-        <div  class="bottom-row">
-            © Andrew Berry 2025
-        </div>
+
     </main>
 
 

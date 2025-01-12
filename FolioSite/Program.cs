@@ -1,4 +1,5 @@
 using FolioSite.Components;
+using FolioCommon;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,5 +24,8 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+
+
 
 app.Run();

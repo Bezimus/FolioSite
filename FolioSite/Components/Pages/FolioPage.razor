@@ -1,0 +1,103 @@
+﻿@page "/FolioPage/{itemId:int}"
+@rendermode InteractiveServer
+
+@using FolioCommon
+
+@code {
+
+    [Parameter]
+    public int itemId { get; set; }
+    public FolioItem? folioItem;
+    public List<FolioItem>? staticFolio;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (staticFolio == null)
+            staticFolio = new List<FolioItem>();
+
+        if (staticFolio.Count == 0)
+        {
+            staticFolio.Add(new FolioItem(1, "Folio", "This is a test", "Developer", "Blazor",
+                                                      StatusType.InDevelopment, @"http://folio","",
+                                                      @"http://github.org"));
+
+            staticFolio.Add(new FolioItem(2, "OTTER", 
+                                        "The On-Time Tracking and Electronic Reporting system (OTTER) is an internal web-based application used by Transwa to record and report the on-time-running of its road and rail services. Information is gathered through a combination of user data entry and integrations with other Transwa systems, and reported via webpages, emails and Scala displays at stations around WA.",
+                                        "Project Management, business analysis and requirements gathering, UX design, test co-ordination, deployment and training.",
+                                        "",
+                                        StatusType.Released, 
+                                        @"https://transwa.wa.gov.au/updates/departures-and-arrivals",
+                                        @"https://www.pta.wa.gov.au/Portals/15/annualreports/2019/PTA_ANNUALREPORT_2019_FINAL.pdf#page=23",
+                                        null));
+
+            staticFolio.Add(new FolioItem(3, "Transwa Website", 
+                                             "I have been involved with the development of the Transwa website through multiple upgrades and rebuilds since 2004.  In previous DotNetNuke base iterations I was a member of the team that built the on-line booking engine and maintained the website.  In the current Evoke website, I was business analyst, end-user test coordinate and technical interface between the internal PTA development team and the 3rd party vendors, including the integrations between the Transwa website and the CustomLinc booking system.",
+                                             "<i>Current website:</i> Business analysis and requirements gathering, UX design, test co-ordination, 3rd party communication and co-ordination. <i>Previous website versions:</i> development and maintenance of booking application. ", 
+                                             "",
+                                              StatusType.Released, 
+                                              @"http://transwa.wa.gov.au", "",
+                                             null));
+
+            staticFolio.Add(new FolioItem(4, "Transwa CTAS", "TWA CTAS", "BA, Architect, Test Co-ordinator", "",
+                StatusType.Released, @"http://transwa.wa.gov.au","",
+                null));
+        }
+
+        folioItem = staticFolio.Find(x => x.ID == itemId);
+        if(folioItem==null){ throw new Exception("Failed to load folio item"); }
+
+    }
+
+
+
+
+}
+
+
+<h3>@folioItem.Name</h3>
+<div>
+    <table class="foliotable" cellpadding="2">
+        @*
+            TODO: Change this so it doesn't use MarkupString but uses a rich text box instead, so its safe from injection attacks.
+        *@
+        <tr><td><b>Description:</b></td><td>@((MarkupString)folioItem.Description)</td></tr>
+        <tr><td><b>Project Roles:</b></td><td>@((MarkupString)folioItem.Role)</td></tr>
+        <tr><td><b>Status</b>:</td>
+        @if (folioItem.Status == StatusType.Released)
+            {<td>Released</td> }
+            else
+            {
+                <td>In development</td>
+            }
+        </tr>
+        <tr>
+            <td><b>Website:</b></td>
+            @if (folioItem.IsWebsite)
+            {
+                <td><a href=@folioItem.Link1.AbsoluteUri>@folioItem.Link1.AbsoluteUri</a></td>
+            }
+            else
+            {
+                <td>No website available.</td>
+            }  
+        </tr>
+            @if(folioItem.Link2!=null)
+            {
+            <tr><td></td><td><a href=@folioItem.Link2.AbsoluteUri>@folioItem.Link2.AbsoluteUri</a></td></tr>
+            }
+      
+        <tr>
+            <td><b>Source code:</b></td>
+            @if (folioItem.IsSourceAvailable)
+            {
+                <td><a href=@folioItem.GitHub.AbsoluteUri>@folioItem.GitHub.AbsoluteUri </a></td>
+            }
+            else
+            {
+                <td>No source publicly available.</td>
+            }
+        </tr>
+        <tr></tr>
+    </table>
+</div>
+
