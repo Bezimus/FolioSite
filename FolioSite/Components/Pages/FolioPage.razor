@@ -17,30 +17,56 @@
 
         if (staticFolio.Count == 0)
         {
-            staticFolio.Add(new FolioItem(1, "Folio", "This is a test", "Developer", "Blazor",
-                                                      StatusType.InDevelopment, @"http://folio","",
-                                                      @"http://github.org"));
+            staticFolio.Add(new FolioItem(1, "Folio", 
+                                          "This is a self-learning project I am currently developing.<br>" + 
+                                          "The goal of this project is to develop a website that provides a central listing details and links for examples of my work in a single location, as well as a technology demonstration.<br>" +
+                                          "This project was only started recently and is still in development.I aim to continue adding features over the coming months.",
+                                          "Developer", "Web App",
+                                           "ASP.NET, Blazor, IIS, MS SQL server",
+                                           StatusType.InDevelopment, 
+                                           @"http://folio","",
+                                           @"http://github.org"));
 
             staticFolio.Add(new FolioItem(2, "OTTER", 
                                         "The On-Time Tracking and Electronic Reporting system (OTTER) is an internal web-based application used by Transwa to record and report the on-time-running of its road and rail services. Information is gathered through a combination of user data entry and integrations with other Transwa systems, and reported via webpages, emails and Scala displays at stations around WA.",
-                                        "Project Management, business analysis and requirements gathering, UX design, test co-ordination, deployment and training.",
-                                        "",
+                                        "Project management, business analysis and requirements gathering, UX design, API architecture, test co-ordination, deployment and training. I did not contribute to writing the code for this project.",
+                                        "Web App",
+                                        "ASP.NET, Vue.js, Scala, IIS, MS SQL server, Oracle server, Evoke CMS",
                                         StatusType.Released, 
                                         @"https://transwa.wa.gov.au/updates/departures-and-arrivals",
                                         @"https://www.pta.wa.gov.au/Portals/15/annualreports/2019/PTA_ANNUALREPORT_2019_FINAL.pdf#page=23",
                                         null));
 
             staticFolio.Add(new FolioItem(3, "Transwa Website", 
-                                             "I have been involved with the development of the Transwa website through multiple upgrades and rebuilds since 2004.  In previous DotNetNuke base iterations I was a member of the team that built the on-line booking engine and maintained the website.  In the current Evoke website, I was business analyst, end-user test coordinate and technical interface between the internal PTA development team and the 3rd party vendors, including the integrations between the Transwa website and the CustomLinc booking system.",
-                                             "<i>Current website:</i> Business analysis and requirements gathering, UX design, test co-ordination, 3rd party communication and co-ordination. <i>Previous website versions:</i> development and maintenance of booking application. ", 
-                                             "",
+                                             "I have been involved with the development of the Transwa website through multiple upgrades and rebuilds since 2004. The Transwa website provides information to the travelling public, on-line booking services and takes credit-card payments. <br> In the previous iterations of the website, where I contributed as a developer, we used a DotNetNuke CRM to manage website content, with a number of custom developed modules used to provide on-line bookings and to take credit card payments.<br>In the current Evoke website has a number of PTA developed application incorporated to the base product, such as the interaction to OTTER (detailed above) and the booking system integration with internal service scheduling software and the 3rd party CustomLinc booking system.The on-line booking process starts with components build by PTA IT hosted within the Evoke website, which then passes the partially completed booking to CustomLinc via API calls to be completed within their web booking system.",
+                                             "<i>Previous website</i>: Developer, focusing on the back-end interface to the core booking system, user security and session tracking, and credit card processing elements.<br><i>Current website: Business analysis and requirements gathering, UX design, test co-ordination, 3rd party communication and co-ordination. I worked with the PTA IT and CustomLinc developers to design the Transwa website’s portion of the booking process, but I did not contribute to writing the code for this project.</i>",
+                                             "Website",
+                                             "ASP.NET, Vue.js, IIS, MS SQL server, Oracle server, Evoke CMS, CustomLinc API",
                                               StatusType.Released, 
                                               @"http://transwa.wa.gov.au", "",
                                              null));
 
-            staticFolio.Add(new FolioItem(4, "Transwa CTAS", "TWA CTAS", "BA, Architect, Test Co-ordinator", "",
-                StatusType.Released, @"http://transwa.wa.gov.au","",
-                null));
+            staticFolio.Add(new FolioItem(4, 
+                                          "Transwa QualMan", 
+                                          "Transwa QualMan was an internal web app used to record and report on job-critical qualifications and licenses held by Transwa staff.It integrated with the PTA’s HR system to access details of Transwa staff.It allowed authorized users to record an individual’s qualifications, to create job profiles of the required qualifications for different roles and to generate reports on staff. Automated reporting warned managers of expiring qualifications, allowing them to better manage staff training and re-certification processes. QualMan was used internally by Transwa from 2006 until 2020, when the PTA introduced a new LMS that was able to take over QualMan’s functions.", 
+                                          "I was the project manager, business analyst, architect, lead developer and test coordinator on this project. I wrote the system design document and personally developed the data storage and reporting components.", 
+                                          "Web App",
+                                          "ASP.NET, C#, IIS, MS SQL server, Crystal Reports",
+                                          StatusType.Released, 
+                                          null,
+                                          null,
+                                          null));
+
+            staticFolio.Add(new FolioItem(5, 
+                                          "Master's Project", 
+                                        "During my Master’s project, I continued development of a mobile robot platform. I improved the robot’s chassis, added additional sensors, and developed an improved control system.  Using a combination of computer vision and thermal sensors, I programmed the robot to find and approach a target object, measure it’s temperature, and return to its original location.",
+                                         "Design and development",
+                                        "Mobile Robot",
+                                         "Linux, OpenCV, Arduino, C, C++",
+                                         StatusType.Released,
+                                         null,
+                                         null,
+                                          null));
         }
 
         folioItem = staticFolio.Find(x => x.ID == itemId);
@@ -62,6 +88,7 @@
         *@
         <tr><td><b>Description:</b></td><td>@((MarkupString)folioItem.Description)</td></tr>
         <tr><td><b>Project Roles:</b></td><td>@((MarkupString)folioItem.Role)</td></tr>
+        <tr><td><b>Tech Stack:</b></td><td>@((MarkupString)folioItem.TechStack)</td></tr>
         <tr><td><b>Status</b>:</td>
         @if (folioItem.Status == StatusType.Released)
             {<td>Released</td> }

@@ -13,6 +13,8 @@ namespace FolioCommon
         public string? Description { get; set; }
         public string? Role { get; set; }
         public string? Type { get; set; }
+
+        public string? TechStack { get; set; }
         public StatusType Status { get; set; }
         public Uri? Link1 { get; set; }
         public Uri? Link2 { get; set; }
@@ -21,12 +23,13 @@ namespace FolioCommon
         public bool IsWebsite { get; } = false;
         public bool IsSourceAvailable { get; } = false;
 
-        public FolioItem(int id, string name, string desc, string role, string type, StatusType status, string? link1, string? link2, string? gitHub)
+        public FolioItem(int id, string name, string desc, string role, string type, string techStack, StatusType status, string? link1, string? link2, string? gitHub)
         {
             this.ID = id;
             this.Name = name;
             this.Description = desc;
             this.Role = role;
+            this.TechStack = techStack;
             this.Type = type;
             this.Status = status;
             if (link1 != null)
